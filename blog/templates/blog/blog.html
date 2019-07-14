@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Aashish's Portfolio</title>
+    <title>Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -52,7 +52,7 @@
         <a class="nav-link" href="{%static 'Resume 7.pdf'%}">Resume</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{%url 'blog'%}">Blog</a>
+        <a class="nav-link active" href="{%url 'blog'%}">Blog</a>
       </li>
     </ul>
   </div>
@@ -63,30 +63,22 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Hi, My name is Aashish Motwani</h1>
-      <img src="{% static 'WhatsApp Image 2019-07-06 at 23.23.58.jpeg'%}" height= "200"></img></div><br><hr>
-      <p class="lead text-muted">Hello, Visitor My name is Aashish Motwani, I am a 3rd year Electrical Engineering student at IIT(BHU),Varanasi.<br>Welcome to my Website!!</p>
-      <p>
-        <a href="mailto:aashish.motwani.eee17@itbhu.ac.in" class="btn btn-primary my-2 ">Email Me</a>
-      </p>
+      <h1 class="jumbotron-heading">MY BLOG</h1><hr>
     </div>
-  </section>
+  
 
-  <div class="album py-5 bg-light">
-    <div class="container">
+
+      {%for blog in blogs.all %}
+      <section class="jumbotron text text-left">
+        <div class="container">
+          <h2 class="jumbotron-heading font-italic ">{{blog.title}}</h2>
+         <u>{{blog.date}}</u><br><br>
+           <img class="img.fluid" src="{{blog.image.url}}" height="200"></img><br><br><br>
+           <p>{{blog.summary}}</p>
+      </section>
+        {%endfor%}  
       
-      <div class="row">
-        {%for job in jobs.all%}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{job.image.url}}">
-            <div class="card-body">
-              <p class="card-text">{{job.summary}}</p>
-            </div>
-          </div>
-        </div>
-         {%endfor%}
-      </div>  
+      
      
     </div>
   </div>
